@@ -30,7 +30,7 @@ source                                        // FILE * pointer
 
 #### Example Code
 ```c
-BMP *file = calloc(5,sizeof(BMP);             // calloc 5 BMP structure
+BMP *file = calloc(5,sizeof(BMP));             // calloc 5 BMP structure
 
 for(int i=0;i<5;i++) CallocBMP(file+i)        // calloc all 5 BMP's structures' pointer
 
