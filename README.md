@@ -16,7 +16,7 @@ void BMPFree(BMP * target);                   // useless
 
 void CallocBMP(BMP * target);                 // for callocing BMP pointer
 ```
-#### BMP Structure ( All are pointer )
+#### BMP Structure ( All are pointer except of path[] arr )
 ```c
 file                                          // file header
 
