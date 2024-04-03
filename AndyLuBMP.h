@@ -7,10 +7,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-static char INPUT_FILE_PATH[1025];
-static char OUTPUT_FILE_PATH[1025];
-
-
 
 
 
@@ -38,8 +34,8 @@ typedef struct _BMPInfo{
 } BMPInfo;
 
 typedef struct _BMP{
-    BMPInfo info;
-    BMPFile file;
+    BMPInfo *info;
+    BMPFile *file;
     char path[1025];
     FILE * source;
 
@@ -49,6 +45,8 @@ int READBMP(BMP * target);
 void showBMPInfo(BMP * target);
 void setupBMP(BMP * target, BMP * from);
 void writeInHeader(BMP *target);
+void BMPFree(BMP * target);
+void CallocBMP(BMP * target);
 
 
 
