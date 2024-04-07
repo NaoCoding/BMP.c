@@ -1,5 +1,13 @@
 #include "AndyLuBMP.h"
 
+int dotBMPcheck(char * target){
+    int q = strlen(target);
+    if(strcmp(target+q-3,"bmp")){
+        if(strcmp(target+q-3,"BMP"))return 0;
+    }
+    return 1;
+}
+
 void CallocBMP(BMP * target){
     target->file = calloc(1,sizeof(BMPFile));
     target->info = calloc(1,sizeof(BMPInfo));
@@ -8,8 +16,8 @@ void CallocBMP(BMP * target){
 void BMPFree(BMP * target){
     free(target->file);
     free(target->info);
-    free(target->path);
-    free(target->source);
+    //free(target->path);
+    //free(target->source);
 }
 
 void writeInHeader(BMP * target){
@@ -52,7 +60,7 @@ void setupBMP(BMP * target , BMP * from){
     target->info->planes = from->info->planes;
     target->info->bitcount = from->info->bitcount;
     target->info->compress = from->info->compress;
-    target->info->BMPsize = from->info->width * from->info->height * 3;
+    target->info->BMPsize = from->info->width * from->info->height * from->info->bitcount/8;
     target->info->xpixel = from->info->xpixel;
     target->info->ypixel = from->info->ypixel;
     target->info->width = from->info->width;
@@ -62,6 +70,7 @@ void setupBMP(BMP * target , BMP * from){
 }
 
 int READBMP(BMP * target){
+    
     
     fread(target->file->type,2,1,target->source);
     

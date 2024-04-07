@@ -47,6 +47,7 @@ void setupBMP(BMP * target, BMP * from);
 void writeInHeader(BMP *target);
 void BMPFree(BMP * target);
 void CallocBMP(BMP * target);
+int dotBMPcheck(char * target);
 
 
 
