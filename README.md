@@ -15,6 +15,8 @@ void writeInHeader(BMP *target);              // write in target.source (only he
 void BMPFree(BMP * target);                   // useless
 
 void CallocBMP(BMP * target);                 // for callocing BMP pointer
+
+int dotBMPcheck(char * target);               // check if string is .bmp or .BMP format , return 1 = true , 0 = false
 ```
 #### BMP Structure ( All are pointers )
 ```c
