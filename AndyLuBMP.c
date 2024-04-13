@@ -1,5 +1,40 @@
 #include "AndyLuBMP.h"
 
+BMP * iniBMP(){
+    BMP * target = calloc(1,sizeof(BMP));
+    CallocBMP(target);
+    return target;
+}
+
+int BMPLoad(BMP * target, char * path, char * mode){
+    strcpy(target->path,path);
+    target->source = fopen(target->path,mode);
+    if(!target->source)return 0;
+    return 1;
+}
+
+void ARR2BMP(BMP * target, uint8_t ***arr){
+    for(int i=0;i<target->info->height;i++){
+        for(int j=0;j<target->info->width;j++){
+            fwrite(arr[i][j],3,1,target->source);
+        }
+        for(int j=0;j<(4-target->info->width*3%4)%4;j++)fwrite("00",1,1,target->source);
+    }
+}
+
+uint8_t ***BMP2ARR(BMP *target){
+    uint8_t ***arr = calloc(target->info->height,sizeof(uint8_t**));
+    for(int i=0;i<target->info->height;i++){
+        arr[i] = calloc(target->info->width,sizeof(uint8_t *));
+        for(int j=0;j<target->info->width;j++){
+            arr[i][j] = calloc(3,sizeof(uint8_t));
+            fread(arr[i][j],1,3,target->source);
+        }
+    }
+    return arr;
+    
+}
+
 int dotBMPcheck(char * target){
     int q = strlen(target);
     if(strcmp(target+q-3,"bmp")){
@@ -73,7 +108,7 @@ int READBMP(BMP * target){
     
     
     fread(target->file->type,2,1,target->source);
-    
+    //printf("%s 1",target->file->type);
     if(strcmp(target->file->type,"BM")){
         if(strcmp(target->file->type,"BA")){
             if(strcmp(target->file->type,"CI")){

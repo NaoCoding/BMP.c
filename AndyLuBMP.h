@@ -48,7 +48,10 @@ void writeInHeader(BMP *target);
 void BMPFree(BMP * target);
 void CallocBMP(BMP * target);
 int dotBMPcheck(char * target);
-
+uint8_t ***BMP2ARR(BMP *target);
+int BMPLoad(BMP * target, char * path, char * mode);
+void ARR2BMP(BMP * target, uint8_t ***arr);
+BMP * iniBMP();
 
 
 #endif
