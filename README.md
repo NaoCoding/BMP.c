@@ -4,6 +4,14 @@
 
 #### Function Lists
 ```c
+BMP * iniBMP()                                // initialize BMP (calloc)
+
+int BMPLoad(BMP * t, char * p, char * m)      // read path to source , return 1 = file found, return 0 = not found
+
+void ARR2BMP(BMP * target, uint8_t ***arr)    // writeIn arr into a BMP file
+
+uint8_t ***BMP2ARR(BMP *target)               // Read BMP file into an arr
+
 int READBMP(BMP * target);                    // return 0 = not BMP , return 1 = success (only headers)
 
 void showBMPInfo(BMP * target);               // show info
@@ -12,7 +20,7 @@ void setupBMP(BMP * target, BMP * from);      // copy all header to target
 
 void writeInHeader(BMP *target);              // write in target.source (only headers)
 
-void BMPFree(BMP * target);                   // useless
+void BMPFree(BMP * target);                   // free BMP
 
 void CallocBMP(BMP * target);                 // for callocing BMP pointer
 
@@ -32,17 +40,17 @@ source                                        // FILE * pointer
 
 #### Example Code
 ```c
-BMP *file = calloc(5,sizeof(BMP));             // calloc 5 BMP structure
+BMP * n = iniBMP()                            // initialize BMP n
 
-for(int i=0;i<5;i++) CallocBMP(file+i)        // calloc all 5 BMP's structures' pointer
+BMPLoad(n,"a.bmp","rb")                       // read BMP file "a.bmp" as n.path and make it to n.source
 
-file[i].source = fopen(file[i].path,'rb')     // setup file[i].source, the path is file[i].path
+READBMP(n)                                    // read BMP *n header
 
-READBMP(&file[i])                             // read file[i].source and copy all header information
+uint8_t ***arr = BMP2ARR(n)                   // read BMP *n to a uint8_t[][][]
 
-showBMPInfo(&file[i])                         // show file[i].file and file[i].info all elements
+showBMPInfo(n)                                // show n.file and n.info all elements
 
-writeInHeader(&file[i])                       // write file[i].file and file[i].info into file[i].source 
+writeInHeader(n)                              // write n.file and n.info into n.source 
 ```
 
 
