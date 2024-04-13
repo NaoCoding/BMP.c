@@ -51,6 +51,7 @@ void CallocBMP(BMP * target){
 void BMPFree(BMP * target){
     free(target->file);
     free(target->info);
+    free(target);
     //free(target->path);
     //free(target->source);
 }
