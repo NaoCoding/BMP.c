@@ -2,6 +2,10 @@
 
 #### Author : NaoCoding
 
+```
+This library includes general useful function for C to parse BMP file.
+```
+
 #### Function Lists
 ```c
 BMP * iniBMP()                                // initialize BMP (calloc)
