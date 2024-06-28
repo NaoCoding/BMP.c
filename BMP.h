@@ -1,5 +1,5 @@
-#ifndef _ANDYLUBMP
-#define _ANDYLUBMP
+#ifndef _BMP
+#define _BMP
 
 #include <stdio.h>
 #include <stdint.h>
