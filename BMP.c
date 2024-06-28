@@ -1,4 +1,4 @@
-#include "AndyLuBMP.h"
+#include "BMP.h"
 
 BMP * iniBMP(){
     BMP * target = calloc(1,sizeof(BMP));
