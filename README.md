@@ -5,7 +5,7 @@
 ```
 This library includes general useful function for C to parse BMP file.
 It is written during the course "computer programming II" by Professor Chi in NTNU.
-It may poccess uncorrect bugs or potential issues.
+It may possess uncorrect bugs or potential issues.
 Feel free to send PR / issues.
 ```
 
